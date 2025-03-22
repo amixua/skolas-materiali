@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
     body {
       line-height: 1.8;
@@ -62,6 +63,11 @@
       margin: auto;
     }
 
+    .chart-container {
+      width: 80%;
+      margin: auto;
+    }
+
     .footer {
       background: #002;
       color: white;
@@ -82,16 +88,43 @@
   <div class="image-section">
     <img src="https://images.squarespace-cdn.com/content/v1/535b1632e4b0ab57db46e48b/1607375832504-4387KQHAOBLTVT0NGJ2W/sunset4.jpg?format=1000w" alt="Sample Image">
     <div class="image-text">Statistika</div>
-    </div>
+  </div>
 
   <div class="content">
-    <p>....</p>
-    <p>....</p>
-    <p>....</p>
+    <p>Statistika histogrammai:</p>
+    <div class="chart-container">
+      <canvas id="histogramChart"></canvas>
+    </div>
   </div>
 
   <div class="footer">
     <p>Autori: Taube Amēlija, Nguyen Ngoc Gia Linh, Santa Cīrule</p>
   </div>
+
+  <script>
+    const ctx = document.getElementById('histogramChart').getContext('2d');
+    const histogramData = {
+      labels: ['Matemātika', 'Latviešu valoda', 'Ķīmija', 'Bioloģija', 'Māksla', 'Fizika', 'Angļu valoda'],
+      datasets: [{
+        label: 'Augšuplādēto materiālu skaits',
+        data: [5, 10, 15, 20, 25, 18, 10],
+        backgroundColor: 'rgba(54, 162, 235, 0.6)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+      }]
+    };
+
+    new Chart(ctx, {
+      type: 'bar',
+      data: histogramData,
+      options: {
+        responsive: true,
+        scales: {
+          y: { beginAtZero: true }
+        }
+      }
+    });
+  </script>
 </body>
 </html>
+
