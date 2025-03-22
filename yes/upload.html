@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      line-height: 2;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f4f8;
+    }
+
+    ul {
+      list-style: none;
+      display: flex;
+      background: #002;
+      padding: 15px;
+      margin: 0;
+    }
+
+    li {
+      margin-left: 20px;
+    }
+
+    li a {
+      color: white;
+      text-decoration: none;
+      padding: 14px 20px;
+      display: block;
+    }
+
+    li a:hover {
+      background: #114;
+    }
+
+    .content {
+      padding: 40px;
+      text-align: center;
+      font-size: 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .search-bar {
+      text-align: center;
+      margin: 30px auto;
+    }
+
+    .search-bar input, .search-bar select, .search-bar button {
+      padding: 12px;
+      margin: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    
+    .image-section {
+      position: relative;
+      text-align: center;
+      width: 100%;
+      height: 450px;
+    }
+
+    .image-section img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+   .image-text {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-size: 32px;
+    }
+
+    .file-table {
+      width: 90%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      background: white;
+    }
+
+    .file-table th, .file-table td {
+      border: 1px solid #ddd;
+      padding: 14px;
+      text-align: left;
+    }
+
+    .file-table th {
+      background: #002;
+      color: white;
+    }
+
+    .upload-section {
+      margin: 40px auto;
+      text-align: center;
+      background: white;
+      padding: 30px;
+      width: 60%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .upload-section input, .upload-section select, .upload-section button {
+      display: block;
+      width: 80%;
+      margin: 12px auto;
+      padding: 12px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .footer {
+      background: #002;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><a href="index.html">Sākumlapa</a></li>
+    <li><a href="upload.html">Materiāli</a></li>
+    <li><a href="info.html">Informācija</a></li>
+    <li><a href="tutorial.html">Pamācība</a></li>
+  </ul>
+
+    <div class="image-section">
+    <img src="https://images.squarespace-cdn.com/content/v1/535b1632e4b0ab57db46e48b/1607375832504-4387KQHAOBLTVT0NGJ2W/sunset4.jpg?format=1000w" alt="Sample Image">
+   <div class="image-text">Pieejamie materiāli</div>
+    </div>
+  
+  <div class="content">
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Meklēt pēc nosaukuma...">
+      <select id="searchSubject">
+        <option value="">Visi priekšmeti</option>
+        <option value="Matemātika">Matemātika</option>
+        <option value="Dabaszinības">Dabaszinības</option>
+        <option value="Valodas">Valodas</option>
+        <option value="Fizika">Fizika</option>
+      </select>
+      <select id="searchType">
+        <option value="">Visi faila veidi</option>
+        <option value="PDF">PDF</option>
+        <option value="Word">Word</option>
+        <option value="PowerPoint">PowerPoint</option>
+      </select>
+      <button onclick="filterFiles()">Meklēt</button>
+    </div>
+
+    <table class="file-table" id="fileTable">
+      <thead>
+        <tr>
+          <th>Nosaukums</th>
+          <th>Priekšmets</th>
+          <th>Faila veids</th>
+          <th>Lejupielādēt</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Algebras pamati</td>
+          <td>Matemātika</td>
+          <td>PDF</td>
+          <td><a href="https://www.siic.lu.lv/datadir/matematika/registretieskolotaji/165.pdf">Lejupielādēt</a></td>
+        </tr>
+        <tr>
+          <td>Ķīmijas eksperimenti</td>
+          <td>Dabaszinības</td>
+          <td>Word</td>
+          <td><a href="https://bbcentre.eu/storage/app/media/uploaded-files/BBCE%20skolenu%20uzdevumi%202021_kimija.pdf">Lejupielādēt</a></td>
+        </tr>
+        <tr>
+          <td>Angļu valodas gramatika</td>
+          <td>Valodas</td>
+          <td>PowerPoint</td>
+          <td><a href="https://moodle.vrk.rs.gov.lv/moodle/course/view.php?id=34">Lejupielādēt</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="upload-section">
+      <h3>Augšupielādēt jaunu failu</h3>
+      <input type="text" id="fileName" placeholder="Faila nosaukums">
+      <select id="uploadSubject">
+        <option value="">Izvēlēties priekšmetu</option>
+        <option value="Matemātika">Matemātika</option>
+        <option value="Dabaszinības">Dabaszinības</option>
+        <option value="Valodas">Valodas</option>
+        <option value="Fizika">Fizika</option>
+      </select>
+      <select id="uploadType">
+        <option value="">Izvēlēties faila veidu</option>
+        <option value="PDF">PDF</option>
+        <option value="Word">Word</option>
+        <option value="PowerPoint">PowerPoint</option>
+      </select>
+      <input type="file" id="uploadFile">
+      <button onclick="uploadFile()">Augšupielādēt</button>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Autori: Taube Amēlija, Nguyen Ngoc Gia Linh, Santa Cīrule</p>
+  </div>
+
+  <script>
+    function uploadFile() {
+      let fileName = document.getElementById("fileName").value;
+      let subject = document.getElementById("uploadSubject").value;
+      let fileType = document.getElementById("uploadType").value;
+      let fileInput = document.getElementById("uploadFile");
+
+      if (!fileName || !subject || !fileType || !fileInput.files.length) {
+        alert("Lūdzu aizpildiet visus laukus un izvēlieties failu.");
+        return;
+      }
+      
+      let table = document.getElementById("fileTable").getElementsByTagName('tbody')[0];
+      let newRow = table.insertRow();
+      newRow.innerHTML = `<td>${fileName}</td><td>${subject}</td><td>${fileType}</td><td><a href="#">Lejupielādēt</a></td>`;
+
+      document.getElementById("fileName").value = "";
+      document.getElementById("uploadSubject").value = "";
+      document.getElementById("uploadType").value = "";
+      document.getElementById("uploadFile").value = "";
+      alert("Fails veiksmīgi pievienots tabulai!");
+    }
+
+    function filterFiles() {
+      let searchInput = document.getElementById("searchInput").value.toLowerCase();
+      let searchSubject = document.getElementById("searchSubject").value.toLowerCase();
+      let searchType = document.getElementById("searchType").value.toLowerCase();
+      let table = document.getElementById("fileTable");
+      let rows = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < rows.length; i++) {
+        let name = rows[i].getElementsByTagName("td")[0].textContent.toLowerCase();
+        let subject = rows[i].getElementsByTagName("td")[1].textContent.toLowerCase();
+        let type = rows[i].getElementsByTagName("td")[2].textContent.toLowerCase();
+
+        rows[i].style.display = 
+          (name.includes(searchInput) || searchInput === "") &&
+          (subject.includes(searchSubject) || searchSubject === "") &&
+          (type.includes(searchType) || searchType === "") ? "" : "none";
+      }
+    }
+  </script>
+</body>
+</html>
+
